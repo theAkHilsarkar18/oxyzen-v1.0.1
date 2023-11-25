@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           '',
         ),
       ],
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.dashboardScreen,
       routes: AppRoutes.routes,
     );
   }

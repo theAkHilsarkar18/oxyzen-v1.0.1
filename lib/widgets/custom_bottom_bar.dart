@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:oxyzen/core/app_export.dart';
+import 'package:oxyzen/presentation/article_screen/article_screen.dart';
+import 'package:oxyzen/presentation/book_an_appointment_screen/book_an_appointment_screen.dart';
+import 'package:oxyzen/presentation/dashboard_screen/dashboard_screen.dart';
+import 'package:oxyzen/presentation/message_page/message_page.dart';
+import 'package:oxyzen/presentation/message_tab_container_screen/message_tab_container_screen.dart';
 
 class CustomBottomBar extends StatefulWidget {
   CustomBottomBar({this.onChanged});
@@ -54,26 +59,34 @@ class CustomBottomBarState extends State<CustomBottomBar> {
         type: BottomNavigationBarType.fixed,
         items: List.generate(bottomMenuList.length, (index) {
           return BottomNavigationBarItem(
-            icon: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CustomImageView(
-                  imagePath: bottomMenuList[index].icon,
-                  height: 21.v,
-                  width: 20.h,
-                  color: appTheme.gray500,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 4.v),
-                  child: Text(
-                    bottomMenuList[index].title ?? "",
-                    style: theme.textTheme.labelSmall!.copyWith(
-                      color: appTheme.gray500,
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder:  (context) => bottomScreenList[index],));
+                setState(() {
+
+                });
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CustomImageView(
+                    imagePath: bottomMenuList[index].icon,
+                    height: 21.v,
+                    width: 20.h,
+                    color: appTheme.gray500,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 4.v),
+                    child: Text(
+                      bottomMenuList[index].title ?? "",
+                      style: theme.textTheme.labelSmall!.copyWith(
+                        color: appTheme.gray500,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             activeIcon: Column(
               mainAxisSize: MainAxisSize.min,
@@ -156,3 +169,10 @@ class DefaultWidget extends StatelessWidget {
     );
   }
 }
+
+List bottomScreenList = [
+  DashboardScreen(),
+  MessagePage(),
+  BookAnAppointmentScreen(),
+  ArticleScreen(),
+];

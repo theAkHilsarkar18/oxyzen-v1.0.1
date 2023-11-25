@@ -149,13 +149,13 @@ class DashboardScreen extends StatelessWidget {
     return Align(
         alignment: Alignment.centerRight,
         child: SizedBox(
-            height: 173.v,
+            height: 200.v,
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) {
                   return SizedBox(width: 14.h);
                 },
-                itemCount: 3,
+                itemCount: 6,
                 itemBuilder: (context, index) {
                   return DoctorItemWidget(onTapDoctor: () {
                     onTapDoctor(context);
